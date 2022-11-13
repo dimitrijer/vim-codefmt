@@ -37,5 +37,6 @@ pkgs.mkShell {
     myNeovim
     myPython
     pkgs.haskellPackages.ormolu
+    pkgs.ocamlformat
   ];
 }
