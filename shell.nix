@@ -5,10 +5,21 @@ let
     pkgs.python3Packages.pynvim
     vroom
   ]);
+  vim-glaive = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-glaive";
+    src = pkgs.fetchFromGitHub {
+      owner = "google";
+      repo = "vim-glaive";
+      rev = "3c5db8d279f86355914200119e8727a085863fcd";
+      hash = "sha256-uNDz2MZrzzRXfVbS5yUGoJwa6DMV63yZXO31fMUrDe8=";
+    };
+    meta.homepage = "https://github.com/google/vim-glaive";
+  };
   myNeovim = pkgs.neovim.override {
     configure = {
       packages.myPlugins = with pkgs.vimPlugins; {
         start = [
+          vim-glaive
           vim-maktaba
         ];
       };
